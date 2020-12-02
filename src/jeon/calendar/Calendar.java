@@ -24,10 +24,18 @@ public class Calendar {
 //		4,6,9,11 : 30일
 		Scanner scanner = new Scanner(System.in);
 		Calendar cal = new Calendar();
+		
+		System.out.println("반복 횟수를 입력하세요. : ");
+		int count = scanner.nextInt();
+		
+		for(int i=0;i<count;i++) {
 		System.out.println("달을 입력하세요. : ");
 		int month = scanner.nextInt();
 		
 		System.out.println(month+"월은 "+cal.maxDaysOfMonth(month)+"일까지 있습니다.");
+		}
+		
+		System.out.println("Goodbye~");
 		scanner.close();
 	}
 }
