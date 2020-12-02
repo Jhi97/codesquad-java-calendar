@@ -24,14 +24,20 @@ public class Calendar {
 //		4,6,9,11 : 30일
 		Scanner scanner = new Scanner(System.in);
 		Calendar cal = new Calendar();
+		String PROMPT="cal> ";
 		
-		System.out.println("반복 횟수를 입력하세요. : ");
-		int count = scanner.nextInt();
+		int month = 0;
 		
-		for(int i=0;i<count;i++) {
+		while(true){
 		System.out.println("달을 입력하세요. : ");
-		int month = scanner.nextInt();
-		
+		System.out.print(PROMPT);
+		month = scanner.nextInt();
+		if (month == -1) {
+			break;
+		}
+		else if(month >=13) {
+			continue;
+		}
 		System.out.println(month+"월은 "+cal.maxDaysOfMonth(month)+"일까지 있습니다.");
 		}
 		
