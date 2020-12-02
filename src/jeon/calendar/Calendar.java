@@ -4,6 +4,12 @@ import java.util.Scanner;
 
 public class Calendar {
 
+	public final int[] MAX_DAYS = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+	
+	public int maxDaysOfMonth(int month) {
+		return MAX_DAYS[month-1];
+	}
+	
 	public static void main(String[] args) {
 		System.out.println("일 월 화 수 목 금 토");
 		System.out.println("--------------------");
@@ -17,21 +23,11 @@ public class Calendar {
 //		2월 28일
 //		4,6,9,11 : 30일
 		Scanner scanner = new Scanner(System.in);
-		int month;
+		Calendar cal = new Calendar();
 		System.out.println("달을 입력하세요. : ");
-		a = scanner.nextInt();
-		if (month <= 7) {
-			if (month % 2 == 1) {
-				System.out.println(month + "월의 최대 일수는 31일 입니다.");
-			} else if (month == 2)
-				System.out.println(month + "월의 최대 일수는 28일 입니다.");
-			else
-				System.out.println(month + "월의 최대 일수는 30일 입니다.");
-		} else if (month % 2 == 1)
-			System.out.println(month + "월의 최대 일수는 30일 입니다.");
-		else
-			System.out.println(month
-					+ "월의 최대 일수는 31일 입니다.");
+		int month = scanner.nextInt();
+		
+		System.out.println(month+"월은 "+cal.maxDaysOfMonth(month)+"일까지 있습니다.");
 		scanner.close();
 	}
 }
