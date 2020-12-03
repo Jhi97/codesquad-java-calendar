@@ -21,8 +21,7 @@ public class Prompt {
 			} else if (month >= 13) {
 				continue;
 			}
-			System.out.println(month + "월은 " + cal.maxDaysOfMonth(month) + "일까지 있습니다.");
-			cal.calendarfunc(month);
+			cal.calendarfunc(cal.maxDaysOfMonth(month));
 		}
 
 		System.out.println("Goodbye~");
