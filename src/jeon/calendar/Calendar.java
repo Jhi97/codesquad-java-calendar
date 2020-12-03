@@ -7,7 +7,7 @@ public class Calendar {
 	public final int[] LEAP_MAX_DAYS = { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 
 	public boolean isLeapYear(int year) {
-		if (year % 4 == 0 && year % 100 != 0 || year % 400 != 0)
+		if (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0))
 			return true;
 		else
 			return false;
@@ -22,14 +22,19 @@ public class Calendar {
 		}
 	}
 
-	public void calendarfunc(int n, int m) {
-		System.out.printf("  <<%d4년 %d2월>>\n",n,m);
+	public void calendarfunc(int n, int m, int weekday) {
+		System.out.printf("  <<%4d년 %2d월>>\n",n,m);
 		System.out.println("일 월 화 수 목 금 토");
 		System.out.println("--------------------");
+		//print blank space
+		for (int i=0; i<weekday; i++) {
+			System.out.print("   ");
+		}
+		
 		int maxDay = maxDaysOfMonth(n, m);
 		for (int y = 1; y <= maxDay; y++) {
 			System.out.printf("%2d ", y);
-			if (y % 7 == 0) {
+			if ((y+weekday) % 7 == 0) {
 				System.out.println();
 			}
 		}

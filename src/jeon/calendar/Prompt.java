@@ -3,8 +3,17 @@ package jeon.calendar;
 import java.util.Scanner;
 
 public class Prompt {
-	private final static String PROMPT_YEAR="YEAR>";
-	private final static String PROMPT_MONTH="MONTH>";
+	
+	public int parseDay(String week) {
+		if (week.equals("일")) {return 0;}
+		else if(week.equals("월")) { return 1;}
+		else if(week.equals("화")) { return 2;}
+		else if(week.equals("수")) { return 3;}
+		else if(week.equals("목")) { return 4;}
+		else if(week.equals("금")) { return 5;}
+		else if(week.equals("토")) { return 6;}
+		else return 0;
+	}
 	
 	public void runPrompt() {
 		Scanner scanner = new Scanner(System.in);
@@ -12,19 +21,25 @@ public class Prompt {
 
 		int month = 0;
 		int year = 0;
+		int weekday=0;
+		
 		while (true) {
 			System.out.println("년을 입력하세요. :");
-			System.out.println(PROMPT_YEAR);
+			System.out.print("YEAR>");
 			year = scanner.nextInt();
 			System.out.println("달을 입력하세요. : ");
-			System.out.print(PROMPT_MONTH);
+			System.out.println("MONTH>");
 			month = scanner.nextInt();
+			System.out.println("첫째 날의 요일을 입력하세요(일, 월, 화, 수, 목, 금, 토)");
+			String str_weekday = scanner.next();
+			weekday = parseDay(str_weekday);
+			
 			if (month == -1) {
 				break;
 			} else if (month >= 13) {
 				continue;
 			}
-			cal.calendarfunc(year, month);
+			cal.calendarfunc(year, month, weekday);
 		}
 
 		System.out.println("Goodbye~");
