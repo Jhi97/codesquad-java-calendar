@@ -1,21 +1,35 @@
 package jeon.calendar;
 
-import java.util.Scanner;
 
 public class Calendar {
 
 	public final int[] MAX_DAYS = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+	public final int[] LEAP_MAX_DAYS = { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 
-	public int maxDaysOfMonth(int month) {
-		return MAX_DAYS[month - 1];
+	public boolean isLeapYear(int year) {
+		if (year % 4 == 0 && year % 100 != 0 || year % 400 != 0)
+			return true;
+		else
+			return false;
+
 	}
 
-	public void calendarfunc(int i) {
+	public int maxDaysOfMonth(int year, int month) {
+		if (isLeapYear(year)) {
+			return LEAP_MAX_DAYS[month - 1];
+		} else {
+			return MAX_DAYS[month - 1];
+		}
+	}
+
+	public void calendarfunc(int n, int m) {
+		System.out.printf("  <<%d4년 %d2월>>\n",n,m);
 		System.out.println("일 월 화 수 목 금 토");
 		System.out.println("--------------------");
-		for(int n=1; n<=i; n++) {
-			System.out.printf("%2d ",n);
-			if(n%7==0) {
+		int maxDay = maxDaysOfMonth(n, m);
+		for (int y = 1; y <= maxDay; y++) {
+			System.out.printf("%2d ", y);
+			if (y % 7 == 0) {
 				System.out.println();
 			}
 		}
@@ -34,7 +48,7 @@ public class Calendar {
 		 * }
 		 */
 		System.out.println();
+		
 	}
 
-	
 }
